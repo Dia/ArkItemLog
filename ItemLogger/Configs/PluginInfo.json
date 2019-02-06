@@ -1,0 +1,6 @@
+{
+  "FullName":"ItemLogger",
+  "Description":"Log item actions",
+  "Version":1.0,
+  "MinApiVersion":2.9
+}

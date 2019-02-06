@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ItemLogger", "ItemLogger\ItemLogger.vcxproj", "{45D9401F-810C-4152-8F6C-EED6003D3CBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Ark|x64 = Ark|x64
+		Atlas|x64 = Atlas|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45D9401F-810C-4152-8F6C-EED6003D3CBC}.Ark|x64.ActiveCfg = Ark|x64
+		{45D9401F-810C-4152-8F6C-EED6003D3CBC}.Ark|x64.Build.0 = Ark|x64
+		{45D9401F-810C-4152-8F6C-EED6003D3CBC}.Atlas|x64.ActiveCfg = Atlas|x64
+		{45D9401F-810C-4152-8F6C-EED6003D3CBC}.Atlas|x64.Build.0 = Atlas|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6126B3DE-FEE8-40DB-917E-B89F4FA34914}
+	EndGlobalSection
+EndGlobal
