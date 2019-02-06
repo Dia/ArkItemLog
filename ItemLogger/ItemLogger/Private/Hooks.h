@@ -2,6 +2,6 @@
 
 namespace ItemLogger::Hooks
 {
-	void Init();
-	void Unload();
+    void Init();
+    void Unload();
 }

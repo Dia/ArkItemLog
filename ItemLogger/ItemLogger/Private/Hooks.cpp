@@ -1,5 +1,4 @@
 #include "Hooks.h"
-
 #include "Main.h"
 
 namespace ItemLogger::Hooks
@@ -15,42 +14,42 @@ namespace ItemLogger::Hooks
     DECLARE_HOOK(UPrimalItem_RemoveItemFromInventory, bool, UPrimalItem*, bool, bool);
     DECLARE_HOOK(AShooterGameMode_SaveWorld, void, AShooterGameMode *);
 
-    void  Hook_UPrimalInventoryComponent_DropItem(UPrimalInventoryComponent* _this, FItemNetInfo* theInfo, bool bOverrideSpawnTransform, FVector* LocationOverride, FRotator* RotationOverride, bool bPreventDropImpulse, bool bThrow, bool bSecondryAction, bool bSetItemDropLocation)
+    void Hook_UPrimalInventoryComponent_DropItem(UPrimalInventoryComponent* _this, FItemNetInfo* theInfo, bool bOverrideSpawnTransform, FVector* LocationOverride, FRotator* RotationOverride, bool bPreventDropImpulse, bool bThrow, bool bSecondryAction, bool bSetItemDropLocation)
     {
         Log::GetLog()->info("UPrimalInventoryComponent_DropItem");
         UPrimalInventoryComponent_DropItem_original(_this, theInfo, bOverrideSpawnTransform, LocationOverride, RotationOverride, bPreventDropImpulse, bThrow, bSecondryAction, bSetItemDropLocation);
     }
 
-    bool  Hook_UPrimalInventoryComponent_RemoveItem(UPrimalInventoryComponent* _this, FItemNetID* itemID, bool bDoDrop, bool bSecondryAction, bool bForceRemoval, bool showHUDMessage)
+    bool Hook_UPrimalInventoryComponent_RemoveItem(UPrimalInventoryComponent* _this, FItemNetID* itemID, bool bDoDrop, bool bSecondryAction, bool bForceRemoval, bool showHUDMessage)
     {
         return UPrimalInventoryComponent_RemoveItem_original(_this, itemID, bDoDrop, bSecondryAction, bForceRemoval, showHUDMessage);
     }
 
-    void  Hook_UPrimalInventoryComponent_ServerCraftItem(UPrimalInventoryComponent* _this, FItemNetID* itemID, AShooterPlayerController* ByPC)
+    void Hook_UPrimalInventoryComponent_ServerCraftItem(UPrimalInventoryComponent* _this, FItemNetID* itemID, AShooterPlayerController* ByPC)
     {
         Log::GetLog()->info("UPrimalInventoryComponent_ServerCraftItem");
         UPrimalInventoryComponent_ServerCraftItem_original(_this, itemID, ByPC);
     }
 
-    bool  Hook_UPrimalInventoryComponent_RemoveArkTributeItem(UPrimalInventoryComponent* _this, FItemNetID* itemID, unsigned int Quantity)
+    bool Hook_UPrimalInventoryComponent_RemoveArkTributeItem(UPrimalInventoryComponent* _this, FItemNetID* itemID, unsigned int Quantity)
     {
         Log::GetLog()->info("UPrimalInventoryComponent_RemoveArkTributeItem");
         return UPrimalInventoryComponent_RemoveArkTributeItem_original(_this, itemID, Quantity);
     }
 
-    void  Hook_UPrimalInventoryComponent_OnArkTributeItemsAdded(UPrimalInventoryComponent* _this, bool Success, TArray<FItemNetInfo>* AddedItems)
+    void Hook_UPrimalInventoryComponent_OnArkTributeItemsAdded(UPrimalInventoryComponent* _this, bool Success, TArray<FItemNetInfo>* AddedItems)
     {
         Log::GetLog()->info("UPrimalInventoryComponent_OnArkTributeItemsAdded");
         UPrimalInventoryComponent_OnArkTributeItemsAdded_original(_this, Success, AddedItems);
     }
 
-    void  Hook_UPrimalInventoryComponent_OnArkTributeItemsRemoved(UPrimalInventoryComponent* _this, bool Success, TArray<FItemNetInfo>* RemovedItems, TArray<FItemNetInfo>* NotFoundItems, int FailureResponseCode, FString* FailureResponseMessage, bool bAllowForcedItemDownload)
+    void Hook_UPrimalInventoryComponent_OnArkTributeItemsRemoved(UPrimalInventoryComponent* _this, bool Success, TArray<FItemNetInfo>* RemovedItems, TArray<FItemNetInfo>* NotFoundItems, int FailureResponseCode, FString* FailureResponseMessage, bool bAllowForcedItemDownload)
     {
         Log::GetLog()->info("UPrimalInventoryComponent_OnArkTributeItemsRemoved");
         UPrimalInventoryComponent_OnArkTributeItemsRemoved_original(_this, Success, RemovedItems, NotFoundItems, FailureResponseCode, FailureResponseMessage, bAllowForcedItemDownload);
     }
 
-    void  Hook_UPrimalItem_AddToInventory(UPrimalItem* _this, UPrimalInventoryComponent* toInventory, bool bEquipItem, bool AddToSlotItems, FItemNetID* InventoryInsertAfterItemID, bool ShowHUDNotification, bool bDontRecalcSpoilingTime, bool bIgnoreAbsoluteMaxInventory)
+    void Hook_UPrimalItem_AddToInventory(UPrimalItem* _this, UPrimalInventoryComponent* toInventory, bool bEquipItem, bool AddToSlotItems, FItemNetID* InventoryInsertAfterItemID, bool ShowHUDNotification, bool bDontRecalcSpoilingTime, bool bIgnoreAbsoluteMaxInventory)
     {
         AShooterPlayerController* toOwner = toInventory->GetOwnerController();
         if (toOwner && !_this->bIsEngram().Get())
@@ -65,7 +64,7 @@ namespace ItemLogger::Hooks
                 sourcePlayerName = sp->PlayerNameField().ToString();
                 /*APlayerController* sourceController = sp->GetOwnerController();
                 if (sourceController) {
-                    sourceSteamId = ArkApi::IApiUtils::GetSteamIdFromController(sourceController);
+                sourceSteamId = ArkApi::IApiUtils::GetSteamIdFromController(sourceController);
                 }*/
             }
 
@@ -89,13 +88,13 @@ namespace ItemLogger::Hooks
         UPrimalItem_AddToInventory_original(_this, toInventory, bEquipItem, AddToSlotItems, InventoryInsertAfterItemID, ShowHUDNotification, bDontRecalcSpoilingTime, bIgnoreAbsoluteMaxInventory);
     }
 
-    bool  Hook_UPrimalItem_RemoveItemFromArkTributeInventory(UPrimalItem* _this)
+    bool Hook_UPrimalItem_RemoveItemFromArkTributeInventory(UPrimalItem* _this)
     {
         Log::GetLog()->info("UPrimalItem_RemoveItemFromArkTributeInventory");
         return UPrimalItem_RemoveItemFromArkTributeInventory_original(_this);
     }
 
-    bool  Hook_UPrimalItem_RemoveItemFromInventory(UPrimalItem* _this, bool bForceRemoval, bool showHUDMessage)
+    bool Hook_UPrimalItem_RemoveItemFromInventory(UPrimalItem* _this, bool bForceRemoval, bool showHUDMessage)
     {
         return UPrimalItem_RemoveItemFromInventory_original(_this, bForceRemoval, showHUDMessage);
     }
